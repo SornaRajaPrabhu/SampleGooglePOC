@@ -1,10 +1,14 @@
+from Configurations_info import config
 from flask import Flask
 
 app = Flask(__name__)
 
 @app.route('/')
 def hello() -> str:
-    return 'Hello World!'
+    config_info = config()
+    userName = config_info.get_username()
+    password = config_info.get_password()
+    return 'Hello World!' + userName + password
 
 
 if __name__ == '__main__':
